@@ -1,0 +1,27 @@
+import openpyxl
+
+
+load="C://Users//User//Desktop//New folder//"
+rawdata=pd.read_excel(load+'testVB.xlsx',sheetname='Sheet1')
+daily=pd.read_excel(load+'testVB.xlsx',sheetname='市场日报')
+t=pd.read_excel(load+'testVB.xlsx',sheetname='机构')
+# print(t)
+print(len(t))
+# exit()
+top=t.iloc[[0,1,2,3 ],:]
+top=top.dropna(how='all')
+bottom=t.iloc[[19,20],:]
+rawdata=rawdata.loc[(rawdata['汇总']=='成都')]
+city=['成都']
+# tmp=pd.concat([top,rawdata],axis=0,ignore_index=True)
+tmp=top.append(rawdata,ignore_index=True)
+# tmp.to_excel(load+'20200627'+city[0]+'.xlsx',index=None,sheet_name='报',header=None)
+
+tmp=daily.loc[daily['机构']=='成都']
+tt=bottom.append(tmp,ignore_index=True)
+# t=pd.concat([bottom,tmp],axis=1,ignore_index=True)
+t.to_excel(load+'ddd.xlsx')
+# excel_writer = pd.ExcelWriter(load+'20200627'+city[0]+'.xlsx', engine='openpyxl')
+# book = openpyxl.load_workbook(excel_writer.path)
+# excel_writer.book = book
+# tt.to_excel(excel_writer=excel_writer, sheet_name= 'r报', index=None,startrow=20)
