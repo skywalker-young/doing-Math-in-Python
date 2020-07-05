@@ -1,3 +1,5 @@
+###不太懂
+#https://www.51wikihow.com/excel/how-excel-splits-data-into-multiple-sheets-based-on-column-values.html
 Sub parse_data()
     Dim lr As Long
     Dim ws As Worksheet
