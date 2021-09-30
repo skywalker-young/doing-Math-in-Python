@@ -1,0 +1,51 @@
+int abcha;
+int abchc;
+int A;
+int C;
+int lowcha;
+int lowchc;
+int speed;
+int total;
+
+task main()
+{
+
+while(1)
+{
+
+ A=getJoystickValue(ChA);
+ C=getJoystickValue(ChC);
+ 
+ abcha=abs(A);
+ abchc=abs(C);
+ 
+ total=abcha+abchc;
+ speed=getMotorSpeed(LeftM);
+ if (abs(A)<90 && abs(A)>10)
+ {
+  lowcha=A*0.6;
+ }else if (abs(A)<10)
+ {lowcha=0;}
+ else
+ {lowcha =A*0.8;}
+
+if (aabs(C)<90 && abs(C)>10)
+{loqchc=C*0.6;}
+else if(abs(C)<10)
+{lowchc=0;}
+else
+{lowchc=C*0.8;}
+if (total<20)
+{
+setMotor(LeftM,0);
+setMotor(RightM,0);
+}
+else
+{
+setMotor(LeftM,lowcha+lowchc);
+setMotor(RightM,lowcha-lowchc);
+}
+
+}//while end
+
+}
